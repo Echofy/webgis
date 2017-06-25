@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta name="renderer" content="webkit">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link href="css/bootstrap.css" rel="stylesheet">
+   <link href="css/wholeweb.css" rel="stylesheet">
+   <link href="css/simple-sidebar.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://openlayers.org/en/v4.1.1/css/ol.css" type="text/css">
+   <link href="css/ol.css" rel="stylesheet">
+   <link href="css/ol3-layerswitcher.css" rel="stylesheet">
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet"  href="css/icono.min.css">
+
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/bootstrap.js"></script>
+   <script src="js/mapinit.js"></script>
+   <script src="js/ol.js"></script>
+   <script src="js/jquery.js"></script>
+   <script src="js/bootstrap.js"></script>
+   <script src="js/ol3-layerswitcher.js"></script>
+   <script src="js/mapfile.js"></script>
+   <script src="js/control.js"></script> 
+   <script src="js/event.js"></script> 
+   <script src="js/fusesearch.js"></script>
+   <script src="js/fusesearch_ajax.js"></script>
+   <script src="js/interaction.js"></script>
+   <script src="js/draw.js"></script>
+
+   <title>huairou</title>
+</head>
+
+<body onload="init()">  
+
+  <div id='head_div'>
+    <div><img id="logo" src="img/flypig.jpg" alt="Fly Pig"> </div>
+    <div id='title'>FlyPig</div>
+    <div><img href="#" src="img/arrow.jpg" id="menu-toggle"></div>
+    <div><a href="#" id="changeColor" value="换肤" onclick="turncolors()">换肤</a></div>
+    <div><a href="signin.html" id='sign'>亲，请登录</a></div>
+    <div><a id="register" href="#">免费注册</a></div>
+    <div class="drop-down">    
+        <a href="#">设置</a>
+        <ul class="drop-down-content">
+          <li><a href="#">个人中心</a></li>
+          <li><a href="#">账号设置</a></li>        
+        </ul>               
+    </div>
+  </div>
+
+  <div id="main_div" class="toggled">
+
+    <div id="sidebar-wrapper">
+
+      <div id="queryResultDiv">
+          <div id='result_container_div' class="left_panel">
+            <div id="return_menu">
+              <a href="javascript:void(0)">返回</a>
+            </div>
+            <div class='result_container' id='detail'> </div>
+          </div>
+          <div style="clear:both;"></div> 
+          <div id="catalog_div" class="left_panel"></div>
+      </div>
+
+    </div>
+
+    <div id="right_container" class="container-fluid">
+
+        <div id='map_toolbar'>
+
+          <div id='likeQuery' class='col-md-4'>
+            <input id='likeQueryText' class="form-control" type='text' placeholder="关键词">
+            <input type="button" class="btn btn-primary" value="模糊查询" onclick="fitSearch2()">
+          </div>
+
+           <div id='nearQuery' class='col-md-4'>
+            <input id='nearQueryDis' class="form-control " type='text' placeholder="半径">
+            <input type="button" class="btn btn-primary" value="邻近查询" onclick="nearQueryFunc()">
+          </div>
+
+          <span class="icono-home" id="back" onclick="backtohr()"></span>
+
+          <div id='nearQuery' class='col-md-4'>
+
+
+
+            <select class="form-control" id="selectid" onchange="draw()">
+              <option  class="draw"  value="3" ><li id="point">绘图</li></option>
+              <option  class="draw"  value="0" ><li id="point">绘制点</li></option>
+              <option  class="draw"  value="1" ><li id="line">绘制线</li></option>
+              <option  class="draw" value="2" ><li id="polygon">绘制面</li></option>
+              <option  class="draw" value="4" ><li id="finishdraw">结束绘图</li></option>
+            </select>
+            
+          </div>
+        </div>
+
+        <div>
+          <input id='lon' type='text' size='20'>
+          <input id='lat' type='text' size='20'>  
+        </div>
+
+        <div id="mapDiv"></div>   
+
+        <div id='popup' class="ol-popup">
+           <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+           <div id="popup-content"></div>
+        </div>      
+
+    </div>
+
+  </div>
+
+</body>
+</html>

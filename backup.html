@@ -1,0 +1,34 @@
+//第二个选择组合图层，外加图层（hotel，food）
+        new ol.layer.Group({
+                title: 'Overlays',
+                layers: [
+                    new ol.layer.Image({
+                        title: 'Countries',
+                        source: new ol.source.ImageArcGISRest({
+                            ratio: 1,
+                            params: {'LAYERS': 'show:0'},
+                            url: "https://ons-inspire.esriuk.com/arcgis/rest/services/Administrative_Boundaries/Countries_December_2016_Boundaries/MapServer"
+                        })
+                    }),
+                    new ol.layer.Image({
+                        title:'hotel',
+                        source:new ol.source.ImageWMS({
+                            ratio: 1,
+                            url:'http://127.0.0.1:8080/geoserver/webgis/wms',
+                            params:{
+                                'service':'WMS',
+                                'version':'1.1.0',
+                                'request':'GetMap',
+                                'layers':'webgis:Hotel',
+                                'srs':'EPSG:4326',
+                                'format':'image/png',
+                            }
+                        })
+                    })
+                ]
+            })
+
+
+
+             <textarea id="queryResult" class='form-control' placeholder="搜索结果"></textarea>
+             <ul class="sidebar-nav" id="side_left"></ul>
